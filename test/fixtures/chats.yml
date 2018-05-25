@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  massages: 
+  id_user: MyString
+  int,: MyString
+  id_massages: MyString
+  int: MyString
+
+two:
+  massages: 
+  id_user: MyString
+  int,: MyString
+  id_massages: MyString
+  int: MyString

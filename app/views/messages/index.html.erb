@@ -1,0 +1,57 @@
+<div class = 'institute'>
+  <h1 class="name-link">Вопрос-ответ</h1>
+  <p id="notice"><%= notice %></p>
+
+    <div class="messages" >
+    <% @messages.each do |message| %>
+        <div class="message">
+          <p class = "message_name"><%= message.user.name%></p>
+          <p class = "message_text"><%= message.massages %></p>
+          <% if current_user.is_admin? %>
+            <p class="message_destroy"><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+          <% end %>
+        </div>
+
+    <% end %>
+    </div>
+
+  <br>
+  <div class="add-message">
+      <p class="text">Оставить свой комментарий</p>
+      <%= form_for( @message, url: "/messages", local: true) do |form| %>
+        <% if @message.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+            <ul>
+              <% @message.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="field">
+          <%= form.text_area :massages, class: 'form',  id: :message_massages %>
+        </div>
+
+
+        <div class="actions">
+          <%= form.submit "Отправить", class: "btn btn-primary"%>
+        </div>
+      <% end %>
+  </div>
+
+
+
+
+
+</div>
+<footer class='footer'>
+  <p>Copyright © A.Eminov (EAD) 2018 Все права защищены</p>
+</footer>
+
+
+
+
+

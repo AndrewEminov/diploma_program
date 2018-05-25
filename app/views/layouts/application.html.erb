@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Diplom_Andrey</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <header class = "header_application header">
+          <% if logged_in? %>
+            <span>Авторизован как <%= current_user.name %></span>
+            <span><%= link_to 'Выйти', logout_path, method: :delete %></span>
+          <% end %>
+
+      </header>
+      <%= yield %>
+  </body>
+</html>

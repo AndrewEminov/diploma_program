@@ -1,0 +1,38 @@
+<div class="content">
+
+  <h1 class="name-link"><%= @institute.name %></h1>
+
+  <p id="notice"><%= notice %></p>
+
+<div class="user_info">
+
+  <div class="aside">
+    <h2 class = "header-user">Кафедры:</h2>
+    <div class="container-for-links">
+      <% unless @institute.departments.empty? %>
+        <% @institute.departments.each do |department| %>
+          <p class = "link"><%= link_to department.name, department %></p>
+        <% end %>
+      <% end %>
+      <p class = "link"><%= link_to 'К списку институтов', institutes_path %></p>
+    </div>
+  </div>
+
+
+
+  <div class="text">
+    <h1 class = "header-user"><%= @institute.full_name %></h1>
+    <p>
+      <%= @institute.description %>
+    </p>
+  </div>
+</div>
+  <p class="for-admin">
+    <%= link_to 'Редактировать', edit_institute_path(@institute) %>
+  </p>
+</div>
+
+<footer class='footer'>
+  <p>Copyright © A.Eminov (EAD) 2018 Все права защищены</p>
+</footer>
+

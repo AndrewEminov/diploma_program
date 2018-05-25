@@ -1,0 +1,30 @@
+<div class="login">
+  <%= form_with(model: upload_file, local: true) do |form| %>
+    <% if upload_file.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(upload_file.errors.count, "error") %> prohibited this upload_file from being saved:</h2>
+
+        <ul>
+          <% upload_file.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+     <p>Название</p>
+      <%= form.text_field :cover_letter, id: :upload_file_cover_letter %>
+    </div>
+
+    <div class="field">
+      <p>Документ</p>
+      <%= form.file_field :title, id: :upload_file_title %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
+

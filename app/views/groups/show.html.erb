@@ -1,0 +1,24 @@
+<h1><%= @group.name %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<% unless @group.speciality.nil? %>
+  <p>
+    <strong>Специальность:</strong>
+    <%= link_to @group.speciality.name, @group.speciality %>
+  </p>
+<% end %>
+
+<% unless @group.users.empty? %>
+  <h2><strong>Студенты:</strong></h2>
+
+  <% @group.users.each do |user| %>
+    <%= link_to user.name, user %>
+  <% end %>
+<% end %>
+
+<% if current_user.is_admin? %>
+  <%= link_to 'Редактировать', edit_group_path(@group) %> |
+<% end %>
+
+<%= link_to 'К списку групп', groups_path %>

@@ -1,0 +1,21 @@
+
+
+<section class="container">
+  <div class = 'login'>
+    <h1>Войти в личный кабинет</h1>
+    <form method="post">
+      <%= form_for(:session, url: login_path) do |f| %>
+
+        <p><%= f.email_field :email, class: 'form-control', type: "text", placeholder: "Логин или Email"%></p>
+
+        <p><%= f.password_field :password, class: 'form-control', type: "password", placeholder: "Пароль" %></p>
+
+        <p><%= f.submit "Войти", class: "btn btn-primary" %></p>
+      <% end %>
+    </form>
+
+  </div>
+  <div class="login-help">
+    <p>Впервые здесь? <%= link_to "Зарегистрируйтесь!", signup_path %></p>
+  </div>
+</section>

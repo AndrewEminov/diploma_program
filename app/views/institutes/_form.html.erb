@@ -1,0 +1,34 @@
+<div class="login">
+  <%= form_with(model: institute, local: true) do |form| %>
+    <% if institute.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(institute.errors.count, "error") %> prohibited this institute from being saved:</h2>
+
+        <ul>
+          <% institute.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label 'Название' %>
+      <%= form.text_field :name, id: :institute_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label 'Описание' %>
+      <%= form.text_field :description, id: :institute_description %>
+    </div>
+    <div class="field">
+      <%= form.label 'Полное название' %>
+      <%= form.text_field :full_name, id: :institute_full_name %>
+    </div>
+
+
+    <div class="actions">
+      <%= form.submit 'Отправить' %>
+    </div>
+  <% end %>
+</div>

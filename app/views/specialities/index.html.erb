@@ -1,0 +1,40 @@
+<div class='speciality'>
+  <h1 class="name-link">НАПРАВЛЕНИЯ</h1>
+  <p id="notice"><%= notice %></p>
+  <table class="table-grid">
+    <thead class="thead">
+    <tr class="thead_tr">
+      <th class="thead_th">Название</th>
+      <th class="thead_th">Код</th>
+      <th class="thead_th" colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody class="tbody">
+    <% @specialities.each do |speciality| %>
+      <tr class="tbody_tr">
+        <td class="tbody_td"><%= link_to speciality.name, speciality %></td>
+        <td class="tbody_td"><%= speciality.code %></td>
+
+        <% if current_user.is_admin? %>
+          <td class="tbody_td"><%= link_to 'Редактировать', edit_speciality_path(speciality) %></td>
+          <td class="tbody_td"><%= link_to 'Удалить', speciality, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <div class="add-speciality">
+    <% if current_user.is_admin? %>
+      <%= link_to 'Новая специальность', new_speciality_path %>
+    <% end %>
+  </div>
+
+</div>
+
+<footer class='footer'>
+  <p>Copyright © A.Eminov (EAD) 2018 Все права защищены</p>
+</footer>

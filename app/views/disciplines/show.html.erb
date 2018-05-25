@@ -1,0 +1,28 @@
+<div class="content">
+<h1><%= @discipline.name %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Специальность:</strong>
+  <%= link_to @discipline.speciality.name, @discipline.speciality %>
+</p>
+
+<p>
+  <strong>Число часов:</strong> <%= @discipline.hour_count %>
+</p>
+
+<p>
+  <strong>Список литературы:</strong> <%= @discipline.literature %>
+</p>
+
+<p>
+  <strong>Число семестров:</strong> <%= @discipline.semester_count %>
+</p>
+
+<% if current_user.is_admin? %>
+  <%= link_to 'Редактировать', edit_discipline_path(@discipline) %> |
+<% end %>
+
+<%= link_to 'К списку дисциплин', disciplines_path %>
+</div>

@@ -1,0 +1,69 @@
+<div class="content">
+  <div class = 'main-menu'>
+    <div class="institutes content_block"><%= link_to 'Институты', institutes_path, class: 'content_link' %></div>
+    <div class="departments content_block"><%= link_to 'Кафедры', departments_path, class: 'content_link' %></div>
+    <div class="specialities content_block"><%= link_to 'Направления', specialities_path, class: 'content_link' %></div>
+    <div class="disciplines content_block"><%= link_to 'Дисциплины', disciplines_path, class: 'content_link' %></div>
+    <div class="groups content_block"><%= link_to 'РПД', upload_files_path, class: 'content_link' %></div>
+  </div>
+  <div class='user_info'>
+    <div class="info">
+      <h1 class="header-user">Информация о пользователе:</h1>
+      <div class='about-me'>
+        <h1><%= @user.name %></h1>
+
+        <p id="notice"><%= notice %></p>
+
+        <p>
+          <strong>Email:</strong>
+          <%= @user.email %>
+        </p>
+
+        <p>
+          <strong>Роль:</strong>
+          <%= @user.role.code %>
+        </p>
+
+        <p>
+          <%= link_to 'Вопрос-ответ', messages_path %>
+        </p>
+
+        <% unless @user.group.nil? %>
+          <p>
+            <strong>Группа: </strong> <%= link_to @user.group.name, @user.group %>
+          </p>
+        <% end %>
+        <% if current_user.is_admin? %>
+          <%= link_to 'К списку всех пользователей', users_path %>
+        <% end %>
+
+
+
+
+      </div>
+    </div>
+    <div class="text">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Qui dicta minus molestiae vel beatae natus eveniet
+        ratione temporibus aperiam harum alias officiis assumenda
+        officia quibusdam deleniti eos cupiditate dolore doloribus!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Qui dicta minus molestiae vel beatae natus eveniet
+        ratione temporibus aperiam harum alias officiis assumenda
+        officia quibusdam deleniti eos cupiditate dolore doloribus!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Qui dicta minus molestiae vel beatae natus eveniet
+        ratione temporibus aperiam harum alias officiis assumenda
+        officia quibusdam deleniti eos cupiditate dolore doloribus!
+      </p>
+    </div>
+  </div>
+</div>
+<footer class = 'footer'>
+  <p>Copyright © A.Eminov (EAD) 2018  Все права защищены</p>
+</footer>

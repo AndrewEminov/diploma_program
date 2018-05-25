@@ -1,0 +1,46 @@
+
+<div class = 'discipline'>
+  <h1 class="name-link">ДИСЦИПЛИНЫ</h1>
+  <p id="notice"><%= notice %></p>
+  <table class="table-grid">
+    <thead class="thead">
+    <tr class="thead_tr">
+      <th class="thead_th-discipline">Название</th>
+      <th class="thead_th-discipline">Специальность</th>
+      <th class="thead_th-discipline">Список литературы</th>
+      <th class="thead_th-discipline">Количество часов</th>
+      <th class="thead_th-discipline">Количество семестров</th>
+      <th class="thead_th-discipline" colspan="3"></th>
+    </tr>
+  </thead>
+
+
+  <tbody class="tbody-discipline">
+    <% @disciplines.each do |discipline| %>
+      <tr class="tbody_tr">
+        <td class="tbody_td-discipline td-1"><%= discipline.name %></td>
+        <td class="tbody_td-discipline td-2"><%= link_to discipline.speciality.name, discipline.speciality %></td>
+        <td class="tbody_td-discipline td-3"><p><%= discipline.literature %></p></td>
+        <td class="tbody_td-discipline td-4"><%= discipline.hour_count %></td>
+        <td class="tbody_td-discipline td-5"><%= discipline.semester_count %></td>
+
+        <% if current_user.is_admin? %>
+          <td class="tbody_td"><%= link_to 'Редактировать', edit_discipline_path(discipline) %></td>
+          <td class="tbody_td"><%= link_to 'Удалить', discipline, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+  <div class="add-discipline">
+    <% if current_user.is_admin? %>
+      <%= link_to 'Новая дисциплина', new_discipline_path %>
+    <% end %>
+  </div>
+</div>
+
+<footer class='footer'>
+  <p>Copyright © A.Eminov (EAD) 2018 Все права защищены</p>
+</footer>

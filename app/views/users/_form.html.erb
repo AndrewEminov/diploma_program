@@ -1,0 +1,65 @@
+
+
+ <section class="container">
+  <div class = 'login'>
+      <%= form_with(model: user, local: true) do |form| %>
+   <% if user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(user.errors.count, "ошибок") %> это пользователь не может быть сохранен:</h2>
+
+            <ul>
+              <% user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="field">
+          <h1>Редактирование</h1>
+          <%= form.text_field :first_name, id: :user_first_name, class: 'form-control', type: "text", placeholder: "Введите имя"  %>
+        </div>
+
+        <div class="field">
+          <%= form.text_field :middle_name, id: :user_middle_name, class: 'form-control', type: "text", placeholder: "Введите отчество" %>
+        </div>
+
+        <div class="field">
+          <%= form.text_field :last_name, id: :user_last_name, class: 'form-control', type: "text", placeholder: "Введите фамилию" %>
+        </div>
+
+        <div class="field">
+          <%= form.text_field :email, id: :user_email, class: 'form-control', type: "text", placeholder: "Введите email" %>
+        </div>
+
+        <% unless user.id.nil? %>
+          <div class="field">
+            <%= form.label 'Роль' %>
+     <%= collection_select(:user, :user_role_id, UserRole.all, :id, :code, prompt: true) %>
+          </div>
+
+          <div class="field">
+            <%= form.label 'Группа' %>
+     <%= collection_select(:user, :group_id, Group.all, :id, :name, prompt: true) %>
+          </div>
+        <% else %>
+          <div class="field">
+            <%= form.password_field :password, class: 'form-control', type: "password", placeholder: "Введите пароль" %>
+          </div>
+
+          <div class="field">
+            <%= form.password_field :password_confirmation, class: 'form-control', type: "password", placeholder: "Подтверждение пароля" %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= form.submit 'Отправить' %>
+          <%= link_to 'К списку всех пользователей', users_path, class: 'link_all_users' %>
+        </div>
+      <% end %>
+  </div>
+</section>
+
+
+
+

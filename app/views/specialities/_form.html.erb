@@ -1,0 +1,35 @@
+
+<div class="login">
+  <%= form_with(model: speciality, local: true) do |form| %>
+    <% if speciality.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(speciality.errors.count, "error") %> prohibited this speciality from being saved:</h2>
+
+        <ul>
+          <% speciality.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label 'Название' %>
+      <%= form.text_field :name, id: :speciality_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label 'Код' %>
+      <%= form.text_field :code, id: :speciality_code %>
+    </div>
+
+    <div class="field">
+      <%= form.label 'Кафедра' %>
+      <%= collection_select(:speciality, :department_id, Department.all, :id, :name) %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Отправить' %>
+    </div>
+  <% end %>
+</div>

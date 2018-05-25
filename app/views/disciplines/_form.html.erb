@@ -1,0 +1,45 @@
+<div class="login">
+  <%= form_with(model: discipline, local: true) do |form| %>
+    <% if discipline.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(discipline.errors.count, "error") %> prohibited this discipline from being saved:</h2>
+
+        <ul>
+          <% discipline.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label 'Название' %>
+      <%= form.text_field :name, id: :discipline_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label 'Число часов' %>
+      <%= form.number_field :hour_count, id: :discipline_hour_count %>
+    </div>
+
+    <div class="field">
+      <%= form.label 'Список литературы' %>
+      <%= form.text_area :literature, id: :discipline_literature %>
+    </div>
+
+    <div class="field">
+      <%= form.label 'Число семестров' %>
+      <%= form.number_field :semester_count, id: :discipline_semester_count %>
+    </div>
+
+    <div class="field">
+      <%= form.label 'Специальность' %>
+      <%= collection_select(:discipline, :speciality_id, Speciality.all, :id, :name) %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Отправить' %>
+    </div>
+  <% end %>
+</div>
+

@@ -1,0 +1,6 @@
+ru:
+  activerecord:
+    attributes:
+      form:
+        password_field:
+          password: "пароль"
